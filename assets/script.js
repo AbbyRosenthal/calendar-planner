@@ -9,14 +9,13 @@ var currentTime = moment();
 
 displayTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a')
 
-//SAVES TO localStorage
-  document.getElementById("saveBtn").addEventListener("click", function (e) {
+//SAVES TO localStorage for 9am
+  document.getElementById("saveBtn9").addEventListener("click", function (e) {
     // Assume 9 AM for now
     var saveTextArea = document.querySelector("#textarea");
     var thing = {
       "item9AM": saveTextArea.value.trim()
     }
-  
     localStorage.setItem("textArea", JSON.stringify(thing));
   alert("Task has been saved!")
   console.log("yayyy it saved")
@@ -25,14 +24,23 @@ displayTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a')
 //how to save when browswer refreshes **NOT CURRENTLY WORKING
 var loadTasks = function() {
   textArea = JSON.parse(localStorage.getItem("textArea"))
-  console.log("This is the thing! Hooray!", textArea);
+  console.log(textArea);
 };
 
 loadTasks();
  
 
+var timeOfDay = function () {
+  var hour = $(".hour").text().trim();
 
+  var time = moment(hour, "LT");
+  console.log(time)
 
+  //add a class
+  if (moment().isAfter(time))
+
+timeOfDay();
+}
 
 // // //need to use in order to color code backgrounds **REFER TO 5.4.6
 // var auditTask = function(taskEl) {
