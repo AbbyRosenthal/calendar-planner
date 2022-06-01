@@ -2,12 +2,15 @@
 
 var saveTextArea = document.querySelector("#textarea") 
 var textArea;
+var scheduleTime = document.querySelector(".time-block");
 
-//time dispaly at top ..WORKing!!
+//time dispaly at top ..WORKING!
 var displayTime = document.getElementById("todaysDate")
 var currentTime = moment();
 
 displayTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a')
+
+
 
 //SAVES TO localStorage for 9am
   document.getElementById("saveBtn9").addEventListener("click", function (e) {
@@ -28,40 +31,25 @@ var loadTasks = function() {
 };
 
 loadTasks();
+
+
+
  
+//CHANGING COLORS BASED ON TIME OF DAY **NOT WORKING
+var timeNow = moment().hours();
 
-var timeOfDay = function () {
-  var hour = $(".hour").text().trim();
+$(".time-block").each(function(){
+  //turns time into a usable integer... I think
+  var schedule = parseInt($(this).parent().attr("id"));
 
-  var time = moment(hour, "LT");
-  console.log(time)
+  if (schedule < timeNow) {
+    scheduleTime.addClass("past");
+  }
+  else if (schedule === timeNow) {
+    scheduleTime.addClass("present");
+  }
+  else {
+    scheduleTime.addClass("future");
+  }
+})
 
-  //add a class
-  if (moment().isAfter(time))
-
-timeOfDay();
-}
-
-// // //need to use in order to color code backgrounds **REFER TO 5.4.6
-// var auditTask = function(taskEl) {
-//     // get date from task element
-//     var date = $(taskEl).find("span").text().trim();
-  
-//     // convert to moment object at 5:00pm
-//     var time = moment(date, "L").set("hour", 17);
-  
-//     // remove any old classes from element
-//     $(taskEl).removeClass("list-group-item-warning list-group-item-danger");
-  
-//     // apply new class if task is near/over due date **THIS CHNGES THE COLOR OF BACKGROUND
-//     if (moment().isAfter(time)) {
-//       $(taskEl).addClass("list-group-item-danger");
-//     }
-//     else if (Math.abs(moment().diff(time, "days"))<= 2){
-//         $(taskEl).addClass("list-group-item-warning")
-// ;    }
-//   };
-
-
-
-  
