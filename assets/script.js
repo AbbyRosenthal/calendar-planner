@@ -43,13 +43,13 @@ $(".time-block").each(function(){
   var schedule = parseInt($(this).parent().attr("id"));
 
   if (schedule < timeNow) {
-    scheduleTime.addClass("past");
+    document.querySelector("textarea").classList.add("past");
   }
   else if (schedule === timeNow) {
-    scheduleTime.addClass("present");
+    document.querySelector("textarea").classList.add("present");
   }
   else {
-    scheduleTime.addClass("future");
+    document.querySelector("textarea").classList.add("future");
   }
 })
 
