@@ -4,7 +4,7 @@ var saveTextArea = document.querySelector("#textarea")
 var textArea;
 
 //time dispaly at top ..WORKing!!
-var displayTime = document.getElementById("timeofday")
+var displayTime = document.getElementById("todaysDate")
 var currentTime = moment();
 
 displayTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a')

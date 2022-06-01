@@ -70,12 +70,6 @@ body {
     transition: all .3s ease-in-out;
   }
 
-  .timeofday {
-    text-align: center;
-    font-size: larger;
-    font-weight: bold 900;
-    color: hwb(0 0% 100%);
-  }
 
   .hour {
     font-weight: bolder;
