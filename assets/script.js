@@ -1,28 +1,35 @@
 // dateTime.fromObject({ outputCalendar: c }).toLocaleString(DateTime.DATE_FULL);
 
-//time dispaly at top ..WORK IN CONSOLE LOG, WHY DOES IT NOT DISPLAY ON MY PAGE?
-var displayTime = document.getElementById("todaysDate")
+var saveTextArea = document.querySelector("#textarea") 
+var textArea;
+
+//time dispaly at top ..WORKing!!
+var displayTime = document.getElementById("timeofday")
 var currentTime = moment();
 
 displayTime.textContent = currentTime.format('MMMM Do YYYY, h:mm:ss a')
 
-
-$(".container .list-group").sortable({
-    connectWith: $(".container")
-  });
-
-
-//save to localStorage ***NOT CURRENTLY WORKING
-document.getElementById("saveBtn").addEventListener("click", function() {
-var textArea = document.getElementById("textarea").value ;
-localStorage.setItem("textArea",textArea);
-alert("Saved Task!")
-console.log("task Saved")
+//SAVES TO localStorage
+  document.getElementById("saveBtn").addEventListener("click", function (e) {
+    // Assume 9 AM for now
+    var saveTextArea = document.querySelector("#textarea");
+    var thing = {
+      "item9AM": saveTextArea.value.trim()
+    }
+  
+    localStorage.setItem("textArea", JSON.stringify(thing));
+  alert("Task has been saved!")
+  console.log("yayyy it saved")
 });
 
+//how to save when browswer refreshes **NOT CURRENTLY WORKING
+var loadTasks = function() {
+  textArea = JSON.parse(localStorage.getItem("textArea"))
+  console.log("This is the thing! Hooray!", textArea);
+};
 
+loadTasks();
  
-
 
 
 
